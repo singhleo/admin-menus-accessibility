@@ -1,0 +1,77 @@
+/**
+ * Admin Menus Accessibility Javascript
+ */
+
+.ama_adminmenu {
+    padding-top:5px;
+    padding-bottom:5px;
+}
+.ama_hide {
+    display:none !important;
+}
+.ama_showsubmenu {
+    display:block !important;
+    position: static!important;
+}
+.ama_active.ul#adminmenu {
+    overflow: scroll;
+}
+
+/**
+ * Search Fields Style
+ */
+.ama_adminmenu #ama_search {
+    border: none;
+    background: rgba(255, 255, 255, 0.84);
+    width: 95%;
+    margin: auto;
+    display: block;
+    border-radius: 5px;
+    font-size: 12px;
+    margin-bottom: 10px
+}
+
+/**
+ * Tab Style
+ */
+.ama_adminmenu ul.tabs {
+    display: block;
+    list-style: none;
+    margin-left: 4px;
+    margin-bottom: 9px;
+    height: 24px;
+}
+.ama_adminmenu ul.tabs li {
+    color:white;
+    float: left;
+    padding: 3px 10px 3px 10px!important;
+    display: block!important;
+    border-radius: 10px;
+}
+
+/**
+ * Heart Btn Style
+ */
+ul#adminmenu > li > .amaheart {
+    font-size: 14px;
+    color: white;
+    float: right;
+    display: block!important;
+    position: absolute;
+    right: 11px;
+    top: 10px;
+    z-index: 100;
+    visibility: hidden;
+}
+ul#adminmenu > li:hover > .amaheart,#adminmenu .wp-submenu li:hover .amaheart  {
+    visibility: visible;
+}
+ul#adminmenu .amaheart.fa-heart {
+    color: red;
+}
+#adminmenu .wp-submenu li .amaheart {
+    float: right;
+    margin-top: -20px;
+    margin-right: 10px;
+    visibility: hidden;
+}
