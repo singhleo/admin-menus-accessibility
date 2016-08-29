@@ -9,7 +9,7 @@
 /*
 Plugin Name: Admin Menus Accessibility
 Description: A wordpress plugin which adds extra accessibility feature into backend admin menus.
-Version: 1.0.0
+Version: 1.0.1
 Author: Ayush
 Author URI: #
 */
@@ -81,18 +81,9 @@ class admin_menu_accessibility {
 		    register_activation_hook( __FILE__, array($this,'on_plugin_activate') );
 
         // Assets
-        add_action( 'wp_enqueue_scripts', array($this,"enqueue_assets") );
         add_action( 'admin_enqueue_scripts', array($this,"admin_enqueue_assets") );
 
    }
-
-    /*
-    * load all core style and js files.
-    */
-   function enqueue_assets() {
-      wp_enqueue_style( $this->plugin_prefix.'style', $this->plugin_url."asset/style.css" );
-      wp_enqueue_script( $this->plugin_prefix.'action', $this->plugin_url."asset/action.js", array('jquery'), '1.0.0', true );
-    }
 
     /*
     * load all core style and js files for backend.
@@ -100,8 +91,17 @@ class admin_menu_accessibility {
     function admin_enqueue_assets() {
 
         wp_enqueue_style( 'font-awesome', "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" );
+        wp_enqueue_style( 'jquery.growl', $this->plugin_url."asset/jquery.growl.css" );
         wp_enqueue_style( $this->plugin_prefix.'style', $this->plugin_url."asset/style-admin.css" );
         wp_enqueue_script( $this->plugin_prefix.'action', $this->plugin_url."asset/action-admin.js", array('jquery'), '1.0.0', true );
+
+        $translation_array = array(
+          'fav_added' => __( '<b>{{ITEM}}</b> menu added to your fav.', 'plugin-domain' ),
+          'fav_removed' => __( '<b>{{ITEM}}</b> menu removed from your fav.', 'plugin-domain' ),
+        );
+        wp_localize_script( $this->plugin_prefix.'action', 'ama_translate', $translation_array );
+
+        wp_enqueue_script( 'jquery.growl', $this->plugin_url."asset/jquery.growl.js", array('jquery'), '1.0.0', true );
 
     }
 

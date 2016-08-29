@@ -41,6 +41,7 @@ function ama_add_fav_functionality() {
 
         heartbtn = jQuery('<i class="fa amaheart fa-heart-o"></i>');
         heartbtn.data("href",jQuery(this).find("a").first().attr("href"));
+        heartbtn.data("name",jQuery(this).find("a").first().text());
         ama_heartbtn_action(heartbtn);
         jQuery(this).find(".wp-menu-name").first().parent().after(heartbtn);
 
@@ -48,6 +49,7 @@ function ama_add_fav_functionality() {
         jQuery(this).find(".wp-submenu").first().find("li").each(function(){
             heartbtn = jQuery('<i class="fa amaheart fa-heart-o"></i>');
             heartbtn.data("href",jQuery(this).find("a").first().attr("href"));
+            heartbtn.data("name",jQuery(this).find("a").first().text());
             ama_heartbtn_action(heartbtn);
             jQuery(this).append(heartbtn);
         });
@@ -81,12 +83,16 @@ function ama_heartbtn_action(btn) {
                 window.ama_fav = jQuery.parseJSON(response);
 
                 if(jQuery(btn).hasClass("fa-heart-o")) {
-                    jQuery(btn).addClass("fa-heart")
-                    jQuery(btn).removeClass("fa-heart-o")
+                    jQuery(btn).addClass("fa-heart");
+                    jQuery(btn).removeClass("fa-heart-o");
+                    message = String(ama_translate.fav_added).replace("{{ITEM}}",jQuery(btn).data("name"));
                 } else {
-                    jQuery(btn).removeClass("fa-heart")
-                    jQuery(btn).addClass("fa-heart-o")
+                    jQuery(btn).removeClass("fa-heart");
+                    jQuery(btn).addClass("fa-heart-o");
+                    message = String(ama_translate.fav_removed).replace("{{ITEM}}",jQuery(btn).data("name"));
                 }
+
+                jQuery.growl.notice({ message: message });
 
                 jQuery("#ama_search").keyup(); //refresh search.
 
