@@ -16,8 +16,8 @@ The WordPress Plugin "Admin Menus Accessibility" includes the following files:
 
 
 ## Screenshots
-![Search](http://i.imgur.com/5Ow20Ai.png "Search") 
-![Fav Tab](http://i.imgur.com/v4bSKVC.png "Fav")
+![Search](http://i.imgur.com/Cj7j72q.png "Search") 
+![Fav Tab](http://i.imgur.com/AYEwSTb.png "Fav")
 
 
 ## Installation
