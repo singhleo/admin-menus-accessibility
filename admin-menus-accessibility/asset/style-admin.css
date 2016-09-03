@@ -5,16 +5,41 @@
 .ama_adminmenu {
     padding-top:5px;
     padding-bottom:5px;
+    position: static!important;
+    display: block!important;
+    width: 100%!important
+}
+body.folded .ama_adminmenu:hover {
+    width:200px!important;
+    margin-bottom: 10px;
+}
+body.folded .ama_adminmenu .tabs {
+    display: none;
+}
+body.folded .ama_adminmenu #ama_search {
+    display: none;
 }
 .ama_hide {
     display:none !important;
 }
-.ama_showsubmenu {
+body:not(.folded) .ama_showsubmenu {
     display:block !important;
     position: static!important;
 }
 .ama_active.ul#adminmenu {
     overflow: scroll;
+}
+.ama_adminmenu li.searchbtn i {
+    font-size: 16px;
+}
+.ama_adminmenu li.searchbtn a {
+    margin-bottom: 6px;
+    display: block;
+    text-align:center;
+}
+body.folded .ama_adminmenu:hover .tabs,
+body.folded .ama_adminmenu:hover #ama_search {
+    display: block!important;
 }
 
 /**
@@ -40,6 +65,9 @@
     margin-left: 4px;
     margin-bottom: 9px;
     height: 24px;
+}
+body:not(.folded) .ama_adminmenu ul.tabs .searchbtn {
+    display:none;
 }
 .ama_adminmenu ul.tabs li {
     color:white;
@@ -74,4 +102,13 @@ ul#adminmenu .amaheart.fa-heart {
     margin-top: -20px;
     margin-right: 10px;
     visibility: hidden;
+}
+body.folded ul#adminmenu .amaheart {
+    right: 0px;
+    visibility: visible;
+    top: 0px;
+}
+#adminmenu .wp-submenu li.wp-submenu-head .amaheart {
+    margin-top: 4px;
+    margin-right: 5px;
 }

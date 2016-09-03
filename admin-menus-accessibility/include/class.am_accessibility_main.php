@@ -43,8 +43,8 @@ class am_accessibility_main {
     function search_ui() {
         ob_start();
 
-        echo '<div class="ama_adminmenu">'; // this container will be move above using js.
-
+        echo '<div class="ama_adminmenu wp-submenu">'; // this container will be move above using js.
+        echo '<li class="searchbtn"><a href="#"><i class="fa fa-search"></a></i></li>';
         echo '<ul class="tabs">';
         echo '<li class="wp-menu-arrow all">'.__("All",$this->domain()).'</li>';
         echo '<li class="fav"><i class="fa fa-heart"></i> '.__("Fav",$this->domain()).'</li>';

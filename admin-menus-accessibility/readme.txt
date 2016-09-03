@@ -4,7 +4,7 @@ Donate link: https://github.com/singhleo/admin-menus-accessibility
 Tags: menu,wpadmin,backend,filter,search,accessibility,menu search
 Requires at least: 4.0
 Tested up to: 4.6
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -22,6 +22,9 @@ Admin Menus Accessibility will allow you easily filter your wordpress backend ma
 **Support & Post Issues**
 
 [Report on GitHub](https://github.com/singhleo/admin-menus-accessibility)
+
+
+Please give your feedback on review section no matter if its positive or nagative both will contribute on improvement of this plugin.
 
 == Installation ==
 
@@ -50,17 +53,19 @@ Hover your cursor to the menu item you want to add on fav list. then the heart i
 
 == Screenshots ==
 
-1. Menu Filter bar preview
-2. Menu filter with some text
-3. Fav tab bar preview
+1. Menu Filter bar screencast preview
 
 == Changelog ==
 
 **1.0.0 (28 Aug 2016)**
 
-* Initial Release. 
+* Initial Release.
 
 **1.0.1 (29 Aug 2016)**
 
 * Removed 404 style and js on document load
 * Added nice notification balloons for fav action response.
+
+**1.0.2 (3 Sep 2016)**
+
+* Support for Folded Menu
