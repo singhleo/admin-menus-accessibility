@@ -4,7 +4,7 @@ Donate link: https://github.com/singhleo/admin-menus-accessibility
 Tags: menu,wpadmin,backend,filter,search,accessibility,menu search
 Requires at least: 4.0
 Tested up to: 4.6
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -69,3 +69,11 @@ Hover your cursor to the menu item you want to add on fav list. then the heart i
 **1.0.2 (3 Sep 2016)**
 
 * Support for Folded Menu
+
+**1.0.3 (21 Sep 2016)**
+
+* Added language file (kailanwyatt)
+* Placed comments placeholder for later (kailanwyatt)
+* Switched json_encode with wp_send_json (kailanwyatt)
+* Tidy up white spaces (kailanwyatt)
+
