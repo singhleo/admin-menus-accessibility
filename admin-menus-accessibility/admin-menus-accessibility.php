@@ -2,7 +2,7 @@
 /*
 Plugin Name: Admin Menus Accessibility
 Description: A wordpress plugin which adds extra accessibility feature into backend admin menus.
-Version: 1.0.2
+Version: 1.0.3
 Author: Ayush
 Author URI: #
 */
@@ -33,7 +33,7 @@ class admin_menu_accessibility {
     */
    public function __construct() {
 
-	    $this->plugin_version = '1.0';
+	      $this->plugin_version = '1.0.3';
         $this->plugin_dir = plugin_dir_path( __FILE__ );
         $this->plugin_url = plugin_dir_url( __FILE__ );
         $this->plugin_prefix = "am_accessibility";
@@ -73,13 +73,15 @@ class admin_menu_accessibility {
     * @since 1.0,0
     * @return void
     */
-   function hooks() {
+    function hooks() {
+
         add_action( 'plugins_loaded', array($this,"load_textdomain") );
-	    register_activation_hook( __FILE__, array($this,'on_plugin_activate') );
+	      register_activation_hook( __FILE__, array($this,'on_plugin_activate') );
 
         // Assets
         add_action( 'admin_enqueue_scripts', array($this,"admin_enqueue_assets") );
-   }
+
+    }
 
     /*
     * load all core style and js files for backend.
@@ -99,6 +101,7 @@ class admin_menu_accessibility {
 
         wp_enqueue_script( 'jquery.growl', $this->plugin_url."asset/jquery.growl.js", array('jquery'), '1.0.0', true );
     }
+
    /**
     * Loads text domain
     * @since 1.0.0
@@ -106,27 +109,33 @@ class admin_menu_accessibility {
     */
    function load_textdomain() {
         load_plugin_textdomain( $this->domain, false, dirname( plugin_basename( __FILE__ ) ) . '/langs/' );
-    }
+   }
+
 	/**
 	 * [on_plugin_activate description]
 	 * @return [type] [description]
 	 */
    function on_plugin_activate() {
-  	 do_action("{$this->plugin_prefix}_on_plugin_activate");
+  	   do_action("{$this->plugin_prefix}_on_plugin_activate");
    }
 }
+
 /**
  * Define global variable
  */
+
 global $admin_menu_accessibility;
+
 /**
  * [$admin_menu_accessibility description]
  * @var admin_menu_accessibility
  */
+
 $admin_menu_accessibility = new admin_menu_accessibility();
+
 /**
- * [admin_menu_accessibility description]
- * @return [type] [description]
+ * Will be a quick get helper.
+ * @return void Object
  */
 function admin_menu_accessibility() {
     global $admin_menu_accessibility;
