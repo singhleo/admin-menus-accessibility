@@ -8,11 +8,11 @@ Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Admin Menus Accessibility is a wordpress plugin which adds extra accessibility feature into admin menu.
+Admin Menus Accessibility is a WordPress plugin which adds extra accessibility feature into admin menu.
 
 == Description ==
 
-Admin Menus Accessibility will allow you easily filter your wordpress backend main navigation menus using search filters and let you add perticular menu item into your fav menu list.
+Admin Menus Accessibility will allow you to easily filter your WordPress Admin Navigation Menus. Using search filter, it will allow you to add particular menu item into a list of your favorite links.
 
 **Github Project**
 
@@ -24,7 +24,7 @@ Admin Menus Accessibility will allow you easily filter your wordpress backend ma
 [Report on GitHub](https://github.com/singhleo/admin-menus-accessibility)
 
 
-Please give your feedback on review section no matter if its positive or nagative both will contribute on improvement of this plugin.
+Please give your feedback in the review section, no matter if it is positive or negative. Both will contribute to the improvement of the plugin.
 
 == Installation ==
 
@@ -38,13 +38,13 @@ e.g.
 
 == Frequently Asked Questions ==
 
-= Where i can see this plugin in action =
+= Where can I see this plugin in action? =
 
 Check the search input above of the left admin menus
 
-= How i can search for perticuler menu sub items =
+= How can I search for particular menu sub items =
 
-For searching directly sub item of the menu you need to write first menu name first then sub menu text after space. eg.
+For searching directly sub item of the menu you need to first type menu name then sub menu text after space. eg.
 `posts new` this will show new menu item along with parent.
 
 = How to add item to fav tab =
