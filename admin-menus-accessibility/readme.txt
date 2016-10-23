@@ -1,4 +1,4 @@
-=== Plugin Name ===
+=== Admin Menus Accessibility - Quickly Search Admin Menus  ===
 Contributors: singhleo
 Donate link: https://github.com/singhleo/admin-menus-accessibility
 Tags: menu,wpadmin,backend,filter,search,accessibility,menu search
