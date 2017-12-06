@@ -37,6 +37,7 @@ jQuery(document).ready(function(){
 });
 function ama_add_fav_functionality() {
 
+  if (document.getElementsByClassName("fa-heart").length > 0) {
     jQuery("#adminmenu > li").each(function(){
 
         heartbtn = jQuery('<i class="fa amaheart fa-heart-o"></i>');
@@ -55,6 +56,7 @@ function ama_add_fav_functionality() {
         });
 
     });
+  }
 
 }
 
@@ -63,8 +65,8 @@ function ama_heartbtn_action(btn) {
     // restore current stage of btn
     if(typeof window.ama_fav[btn.data("href")] != "undefined") {
         if(jQuery(btn).hasClass("fa-heart-o")) {
-            jQuery(btn).addClass("fa-heart")
-            jQuery(btn).removeClass("fa-heart-o")
+            jQuery(btn).addClass("fa-heart");
+            jQuery(btn).removeClass("fa-heart-o");
         }
     }
 
@@ -80,7 +82,8 @@ function ama_heartbtn_action(btn) {
         save = jQuery.post(ajaxurl,data);
         save.done(function(response){
             if(response != "0") {
-                window.ama_fav = jQuery.parseJSON(response);
+                //window.ama_fav = jQuery.parseJSON(response);
+                window.ama_fav = response;
 
                 if(jQuery(btn).hasClass("fa-heart-o")) {
                     jQuery(btn).addClass("fa-heart");

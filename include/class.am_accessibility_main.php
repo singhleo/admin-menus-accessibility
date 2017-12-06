@@ -11,11 +11,17 @@ class am_accessibility_main {
      * @var [type]
      */
     private static $instance;
+
+    public $favoritesenabled = false;
+
     /**
      * [__construct description]
      */
-	function __construct() {
-	}
+    function __construct() {
+      // default values
+      $this->favoritesenabled = get_option("admin_menus_accessibility_favoritesenabled");
+    }
+
     /**
      * [instance description]
      * @return [type] [description]
@@ -56,10 +62,19 @@ class am_accessibility_main {
 
         echo '<div class="ama_adminmenu wp-submenu">'; // this container will be move above using js.
         echo '<li class="searchbtn"><a href="#"><i class="fa fa-search"></a></i></li>';
-        echo '<ul class="tabs">';
-        echo '<li class="wp-menu-arrow all">'.__("All",$this->domain()).'</li>';
-        echo '<li class="fav"><i class="fa fa-heart"></i> '.__("Fav",$this->domain()).'</li>';
-        echo '</ul>';
+        if ($this->favoritesenabled) {
+          echo '<ul class="tabs">';
+          echo '<li class="wp-menu-arrow all">'.__("All",$this->domain()).'</li>';
+          echo '<li class="fav"><i class="fa fa-heart"></i> '.__("Fav",$this->domain()).'</li>';
+          echo '</ul>';
+        }
+
+        // move to top immediately (so no visible flickering)
+        echo '<script>
+parent = document.getElementById("adminmenu");
+child = document.getElementsByClassName("ama_adminmenu")[0];
+parent.insertBefore(child, parent.firstChild);
+</script>';
 
         $fav = get_user_meta(get_current_user_id(),"ama_fav",true);
 
