@@ -82,7 +82,8 @@ function ama_heartbtn_action(btn) {
         save = jQuery.post(ajaxurl,data);
         save.done(function(response){
             if(response != "0") {
-                window.ama_fav = jQuery.parseJSON(response);
+                //window.ama_fav = jQuery.parseJSON(response);
+                window.ama_fav = response;
 
                 if(jQuery(btn).hasClass("fa-heart-o")) {
                     jQuery(btn).addClass("fa-heart");
