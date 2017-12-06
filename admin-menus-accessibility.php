@@ -81,6 +81,48 @@ class admin_menu_accessibility {
         // Assets
         add_action( 'admin_enqueue_scripts', array($this,"admin_enqueue_assets") );
 
+        // Add Settings link
+        add_filter( 'plugin_action_links_'.plugin_basename( __FILE__ ), array($this, "settings_link") );
+        add_action( 'admin_menu', array($this, "settings_page_link") );
+    }
+
+    function settings_link( $links ) {
+      $settings_link = '<a href="'.admin_url('plugins.php?page=admin-menus-accessibility').'">'.__('Settings', 'admin-menus-accessibility').'</a>';
+      array_unshift( $links, $settings_link );
+      return $links;
+    }
+
+    function settings_page_link() {
+      add_submenu_page( null, 'cetiri', 'tri', 'manage_options', 'admin-menus-accessibility', array($this, 'settings_page'));
+    }
+
+    function settings_page() {
+
+      // save Settings
+      if (isset($_POST['SaveSettings'])) {
+        if (isset($_POST['favoritesenabled'])) {
+          $this->favoritesenabled = true;
+        } else {
+          $this->favoritesenabled = false;
+        }
+
+        update_option('admin_menus_accessibility_favoritesenabled', $this->favoritesenabled);
+
+        // refresh page to get new settings active
+        ?><script>window.location = window.location.href;</script><?php
+        return;
+      }
+
+      ?>
+      <form method="post">
+        <h2>Admin Menus Accessibility Settings:</h2>
+        <?php
+          $this->favoritesenabled = get_option( 'admin_menus_accessibility_favoritesenabled' );
+        ?>
+            <input type='checkbox' name='favoritesenabled' <?php checked( $this->favoritesenabled, 1 ); ?> value='1'>enable favorites</input><br><br>
+            <input type='submit' name='SaveSettings' value='Save Settings' class='button button-primary'></input>
+      </form>
+      <?php
     }
 
     /*

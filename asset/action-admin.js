@@ -37,6 +37,7 @@ jQuery(document).ready(function(){
 });
 function ama_add_fav_functionality() {
 
+  if (document.getElementsByClassName("fa-heart").length > 0) {
     jQuery("#adminmenu > li").each(function(){
 
         heartbtn = jQuery('<i class="fa amaheart fa-heart-o"></i>');
@@ -55,6 +56,7 @@ function ama_add_fav_functionality() {
         });
 
     });
+  }
 
 }
 
