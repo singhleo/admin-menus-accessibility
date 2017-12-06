@@ -63,8 +63,8 @@ function ama_heartbtn_action(btn) {
     // restore current stage of btn
     if(typeof window.ama_fav[btn.data("href")] != "undefined") {
         if(jQuery(btn).hasClass("fa-heart-o")) {
-            jQuery(btn).addClass("fa-heart")
-            jQuery(btn).removeClass("fa-heart-o")
+            jQuery(btn).addClass("fa-heart");
+            jQuery(btn).removeClass("fa-heart-o");
         }
     }
 
