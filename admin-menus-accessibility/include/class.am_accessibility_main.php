@@ -6,20 +6,23 @@
  *
  **/
 class am_accessibility_main {
-    /**
-     * [$instance description]
-     * @var [type]
-     */
+
+	/**
+	 * @var holds class instance
+	 */
     private static $instance;
-    /**
-     * [__construct description]
-     */
+
+	/**
+	 * function that do nothing..
+	 * am_accessibility_main constructor.
+	 */
 	function __construct() {
 	}
-    /**
-     * [instance description]
-     * @return [type] [description]
-     */
+
+	/**
+	 * Class Singleton Instance
+	 * @return mixed
+	 */
     public static function instance()
     {
         if (!isset(self::$instance)) {
@@ -29,17 +32,18 @@ class am_accessibility_main {
         }
         return self::$instance;
     }
-    /**
-     * [domain description]
-     * @return [type] [description]
-     */
+
+	/**
+	 * Return the language domain string.
+	 * @return mixed
+	 */
     function domain() {
         return admin_menu_accessibility()->domain;
     }
-    /**
-     * [hooks description]
-     * @return [type] [description]
-     */
+
+	/**
+	 * All hooks & filters located into this function.
+	 */
 	function hooks() {
         // output all necessary UI needed
         add_filter("adminmenu", array($this,"search_ui"));
@@ -47,7 +51,8 @@ class am_accessibility_main {
         // ajax functionality for fav btn
         add_action( 'wp_ajax_ama_fav', array($this,"fav_ajax") );
 	}
-    /**
+    
+	/**
      * Output the necessary UI above admin menu.
      * @return void
      */
@@ -55,10 +60,10 @@ class am_accessibility_main {
         ob_start();
 
         echo '<div class="ama_adminmenu wp-submenu">'; // this container will be move above using js.
-        echo '<li class="searchbtn"><a href="#"><i class="fa fa-search"></a></i></li>';
+        echo '<li class="searchbtn"><a href="#"><span class="dashicons dashicons-search"></span></a></i></li>';
         echo '<ul class="tabs">';
         echo '<li class="wp-menu-arrow all">'.__("All",$this->domain()).'</li>';
-        echo '<li class="fav"><i class="fa fa-heart"></i> '.__("Fav",$this->domain()).'</li>';
+        echo '<li class="fav"><span class="dashicons dashicons-heart amaheart"></span>'.__("Fav",$this->domain()).'</li>';
         echo '</ul>';
 
         $fav = get_user_meta(get_current_user_id(),"ama_fav",true);
@@ -72,7 +77,7 @@ class am_accessibility_main {
             <script>
             window.ama_fav = '.json_encode( $fav ).';
             </script>
-            <input type="text" id="ama_search" placeholder="'.__("Filter Menus",$this->domain()).'"/>
+            <input type="text" id="ama_search" placeholder="'.__("Search Menus",$this->domain()).'"/>
         ';
         echo '</div>';
         $content = ob_get_contents();
@@ -80,10 +85,11 @@ class am_accessibility_main {
         echo $content;
 
     }
-    /**
-     * [fav_ajax description]
-     * @return [type] [description]
-     */
+
+	/**
+	 * Fav ajax which does all magic!.
+	 * @return string
+	 */
     function fav_ajax(){
 
         if(!is_user_logged_in()){
@@ -105,5 +111,6 @@ class am_accessibility_main {
 
 		wp_send_json($ama_get_fav);
     }
+    
 }
 // End of class

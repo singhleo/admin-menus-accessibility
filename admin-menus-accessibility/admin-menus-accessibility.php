@@ -23,30 +23,31 @@ if ( !function_exists( 'add_action' ) ) {
  */
 class admin_menu_accessibility {
 
-   public $plugin_url;
-   public $plugin_dir;
-   public $plugin_prefix;
-   public $plugin_version;
-   public $domain;
-   /**
-    * [__construct description]
-    */
-   public function __construct() {
+	public $plugin_url;
+	public $plugin_dir;
+	public $plugin_prefix;
+	public $plugin_version;
+	public $domain;
 
-	      $this->plugin_version = '1.0.3';
-        $this->plugin_dir = plugin_dir_path( __FILE__ );
-        $this->plugin_url = plugin_dir_url( __FILE__ );
-        $this->plugin_prefix = "am_accessibility";
-        $this->domain = "admin-menus-accessibility";
+	/**
+	 * admin_menu_accessibility constructor.
+	 */
+	public function __construct() {
 
-        spl_autoload_register( array($this,"autoload") );
+		$this->plugin_version = '1.0.3';
+		$this->plugin_dir     = plugin_dir_path( __FILE__ );
+		$this->plugin_url     = plugin_dir_url( __FILE__ );
+		$this->plugin_prefix  = "am_accessibility";
+		$this->domain         = "admin-menus-accessibility";
 
-        //register all hooks.
-        $this->hooks();
+		spl_autoload_register( array( $this, "autoload" ) );
 
-        // Load Main Class
-        am_accessibility_main::instance();
-   }
+		//register all hooks.
+		$this->hooks();
+
+		// Load Main Class
+		am_accessibility_main::instance();
+	}
 
    /**
     * Magic auto load class method
@@ -75,20 +76,18 @@ class admin_menu_accessibility {
     */
     function hooks() {
 
-        add_action( 'plugins_loaded', array($this,"load_textdomain") );
-	      register_activation_hook( __FILE__, array($this,'on_plugin_activate') );
-
-        // Assets
-        add_action( 'admin_enqueue_scripts', array($this,"admin_enqueue_assets") );
+	    add_action( 'plugins_loaded', array( $this, "load_textdomain" ) );
+	    register_activation_hook( __FILE__, array( $this, 'on_plugin_activate' ) );
+	    // Assets
+	    add_action( 'admin_enqueue_scripts', array( $this, "admin_enqueue_assets" ) );
 
     }
 
-    /*
-    * load all core style and js files for backend.
-    */
+	/**
+	 * Loads js & css
+	 */
     function admin_enqueue_assets() {
 
-        wp_enqueue_style( 'font-awesome', "//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" );
         wp_enqueue_style( 'jquery.growl', $this->plugin_url . "asset/jquery.growl.css" );
         wp_enqueue_style( $this->plugin_prefix.'style', $this->plugin_url . "asset/style-admin.css" );
         wp_enqueue_script( $this->plugin_prefix.'action', $this->plugin_url . "asset/action-admin.js", array('jquery'), '1.0.0', true );
@@ -96,6 +95,8 @@ class admin_menu_accessibility {
         $translation_array = array(
           'fav_added' => __( '<b>{{ITEM}}</b> menu added to your fav.', 'admin-menus-accessibility' ),
           'fav_removed' => __( '<b>{{ITEM}}</b> menu removed from your fav.', 'admin-menus-accessibility' ),
+          'do_unfav' => __( 'Remove from fav..', 'admin-menus-accessibility' ),
+          'do_fav' => __( 'Add to fav.', 'admin-menus-accessibility' ),
         );
         wp_localize_script( $this->plugin_prefix.'action', 'ama_translate', $translation_array );
 
@@ -112,8 +113,7 @@ class admin_menu_accessibility {
    }
 
 	/**
-	 * [on_plugin_activate description]
-	 * @return [type] [description]
+	 * triggers on plugin activate
 	 */
    function on_plugin_activate() {
   	   do_action("{$this->plugin_prefix}_on_plugin_activate");
@@ -135,9 +135,11 @@ $admin_menu_accessibility = new admin_menu_accessibility();
 
 /**
  * Will be a quick get helper.
+ *
  * @return void Object
  */
 function admin_menu_accessibility() {
-    global $admin_menu_accessibility;
-    return $admin_menu_accessibility;
+	global $admin_menu_accessibility;
+
+	return $admin_menu_accessibility;
 }
