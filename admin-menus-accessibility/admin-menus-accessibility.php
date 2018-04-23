@@ -2,7 +2,7 @@
 /*
 Plugin Name: Admin Menus Accessibility
 Description: A wordpress plugin which adds extra accessibility feature into backend admin menus.
-Version: 1.0.3
+Version: 1.0.4
 Author: Ayush
 Author URI: #
 */

@@ -1,10 +1,10 @@
 === Admin Menus Accessibility - Quickly Search Admin Menus  ===
 Contributors: singhleo
 Donate link: https://github.com/singhleo/admin-menus-accessibility
-Tags: menu,wpadmin,backend,filter,search,accessibility,menu search
+Tags: menu, wpadmin, backend, filter, search, accessibility,menu search
 Requires at least: 4.0
-Tested up to: 4.6
-Stable tag: 1.0.3
+Tested up to: 4.9.5
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -77,3 +77,11 @@ Hover your cursor to the menu item you want to add on fav list. then the heart i
 * Switched json_encode with wp_send_json (kailanwyatt)
 * Tidy up white spaces (kailanwyatt)
 
+**1.0.4 (24 April 2018)**
+
+* Fixed fav/unfav buttons bug.
+* Replaced font-awesome with dash-icons.
+* Added Search Highlights.
+* Changed menu filter into menu search.
+* Added tooltips on fav/unfav buttons.
+* Fixed some responsive issues.
